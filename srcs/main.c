@@ -49,7 +49,7 @@ int main(void)
     mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &on_keypress, &data);
     mlx_hook(data.win_ptr, DestroyNotify, StructureNotifyMask, &on_destroy, &data);
 
-    data.img_ptr = mlx_xpm_file_to_image(data.mlx_ptr, "/mnt/c/Users/Golde/OneDrive/Desktop/Assets/Fences.xpm", &data.img_width, &data.img_height);
+    data.img_ptr = mlx_xpm_file_to_image(data.mlx_ptr, "Assets/Fences.xpm", &data.img_width, &data.img_height);
     if (data.img_ptr == NULL)
         return (EXIT_FAILURE);
     mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, data.img_ptr, 64, 64);
