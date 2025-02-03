@@ -6,7 +6,7 @@
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 15:21:01 by lkhye-ya          #+#    #+#             */
-/*   Updated: 2025/01/17 17:45:00 by lkhye-ya         ###   ########.fr       */
+/*   Updated: 2025/01/31 12:17:46 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ int init_sprites(t_sprites *sprites, t_player *player)
 {
     sprites = malloc(sizeof(t_sprites));
     if (!sprites)
-        return (EXIT_FAILURE);
+        err_and_exit(sprites, "Error: Allocation of Memory for sprites failed.\n");
     player = malloc(sizeof(t_player));
     if (!player)
-        return (EXIT_FAILURE);
+        err_and_exit(player, "Error: Allocation of Memory for player sprites failed.\n");
     return (EXIT_SUCCESS);
 }
 
@@ -34,5 +34,6 @@ int sprites(t_data *data, t_sprites *sprites)
     sprites->exit->exit = mlx_xpm_file_to_image(data->mlx_ptr, EXIT, &data->img_width, &data->img_height);
     sprites->collectibles = mlx_xpm_file_to_image(data->mlx_ptr, COLLECTIBLES, &data->img_width, &data->img_height);
     if (!sprites)
-        return (EXIT_FAILURE);
+        err_and_exit(data, "Error: One or More Sprites does NOT exist.\n");
+    return (EXIT_SUCCESS);
 }
