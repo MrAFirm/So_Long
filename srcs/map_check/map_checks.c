@@ -6,7 +6,7 @@
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 20:25:29 by lkhye-ya          #+#    #+#             */
-/*   Updated: 2025/01/13 16:06:06 by lkhye-ya         ###   ########.fr       */
+/*   Updated: 2025/01/31 11:26:28 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int calc_col(char *map, int size_y)
         if (ft_strlen(map[row] != len))
             return (EXIT_FAILURE);
     }
-    return (EXIT_SUCCESS);
+    return (len);
 }
 
 /*

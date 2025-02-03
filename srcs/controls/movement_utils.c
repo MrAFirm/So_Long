@@ -6,7 +6,7 @@
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 17:17:47 by lkhye-ya          #+#    #+#             */
-/*   Updated: 2025/01/17 17:35:53 by lkhye-ya         ###   ########.fr       */
+/*   Updated: 2025/01/31 15:52:52 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int locate_player(t_data *data, int *player_loc)
     int     row;
     int     col;
 
-    map_dup = data->map->map;
+    map_dup = data->map->full_map;
     row = -1;
     while (map_dup[row++])
     {
@@ -34,4 +34,24 @@ int locate_player(t_data *data, int *player_loc)
         }
     }
     return (EXIT_FAILURE);
+}
+
+int remaining_coll(char **map_dup)
+{
+    int row;
+    int col;
+    int coll_count;
+
+    coll_count = 0;
+    row = -1;
+    while (map_dup[++row])
+    {
+        col = -1;
+        while (map_dup[row][col++])
+        {
+            if (map_dup[row][col] == 'C')
+                coll_count++;
+        }
+    }
+    return (coll_count);
 }
