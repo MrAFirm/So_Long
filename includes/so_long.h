@@ -13,11 +13,11 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# define WALLS "/mnt/c/Users/Golde/OneDrive/Desktop/Assets/Walls.xpm"
-# define FLOORS "/mnt/c/Users/Golde/OneDrive/Desktop/Assets/Grass.xpm"
-# define CHARACTER_FRONT "/mnt/c/Users/Golde/OneDrive/Desktop/Assets/Character_front.xpm"
-# define EXIT "/mnt/c/Users/Golde/OneDrive/Desktop/Assets/Door.xpm"
-# define COLLECTIBLES "/mnt/c/Users/Golde/OneDrive/Desktop/Assets/Egg_item.xpm"
+# define WALLS "Assets/Walls.xpm"
+# define FLOORS "Assets/Grass.xpm"
+# define CHARACTER_FRONT "Assets/Character_front.xpm"
+# define EXIT "Assets/Door.xpm"
+# define COLLECTIBLES "Assets/Egg_item.xpm"
 
 # define FALSE 0
 # define TRUE 1
