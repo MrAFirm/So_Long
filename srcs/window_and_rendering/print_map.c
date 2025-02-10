@@ -6,7 +6,7 @@
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 16:23:44 by lkhye-ya          #+#    #+#             */
-/*   Updated: 2025/01/31 15:51:32 by lkhye-ya         ###   ########.fr       */
+/*   Updated: 2025/02/07 15:09:22 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ int print_map(t_data *data, char **full_map)
     int     col;
     
     row = -1;
-    while (full_map[row++])
+    while (full_map[++row])
     {
         col = -1;
-        while (full_map[row][col++])
+        while (full_map[row][++col])
         {
             if (full_map[row][col] == '1')
                 put_img_to_win(data, data->sprites->walls, row, col);

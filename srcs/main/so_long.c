@@ -13,30 +13,6 @@
 #include "../../includes/so_long.h"
 
 /*
-To execute when the game window is closed by the 'X' button,
-to ensure all data is freed.
-*/
-int    on_destroy(void *param)
-{
-    t_data *data = (t_data *)param;
-
-    mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-    mlx_destroy_display(data->mlx_ptr);
-    free(data->mlx_ptr);
-    exit(EXIT_SUCCESS);
-}
-
-/*
-To check for unique key symbols for the X11 library for definition.
-*/
-int on_keypress(int keysym, t_data *data)
-{
-    (void)data;
-    printf("Pressed Key: %d\\n", keysym);
-    return (0);
-}
-
-/*
 To free map data for errors.
 */
 void    free_map(t_data *data)
@@ -70,14 +46,8 @@ void    free_sprites(t_data *data)
             free(data->sprites->walls);
         if (data->sprites->player != NULL)
         {
-            if (data->sprites->player->character_back != NULL)
-                free(data->sprites->player->character_back);
             if (data->sprites->player->character_front != NULL)
                 free(data->sprites->player->character_front);
-            if (data->sprites->player->character_left != NULL)
-                free(data->sprites->player->character_left);
-            if (data->sprites->player->character_right != NULL)
-                free(data->sprites->player->character_right);
         }
     }
 }
@@ -93,22 +63,40 @@ void    err_and_exit(t_data *data, char *err_msg)
     exit(EXIT_FAILURE);
 }
 
-int main(void)
+void    init_mlx(int fd, int argc, char **argv)
 {
-    t_data data;
-
-    data.mlx_ptr = mlx_init();
-    if (data.mlx_ptr == NULL)
-        return (EXIT_FAILURE);
-    data.win_ptr = mlx_new_window(data.mlx_ptr, 1280, 900, "Welcome to my window for So_Long");
-    if (data.win_ptr == NULL)
+    t_data  *data;
+    if (argc != 2)
     {
-        free(data.win_ptr);
-        return (EXIT_FAILURE);
+        ft_printf("Error: Invalid Number of Arguments.\n");
+        exit(EXIT_FAILURE);
     }
-    mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &on_keypress, &data);
-    mlx_hook(data.win_ptr, DestroyNotify, StructureNotifyMask, &on_destroy, &data);
-    // print_map(data, data.map);
-    mlx_loop(data.mlx_ptr);
+    fd = open(argv[1], O_RDONLY);
+    if (fd < 0)
+    {
+        ft_printf("Error: Cannot open file.\n");
+        exit(EXIT_FAILURE);
+    }
+    data = malloc(sizeof(t_data));
+    if (!data)
+    {
+        ft_printf("Error: Memory Allocation Failed for t_data\n");
+        exit(EXIT_FAILURE);
+    }
+    data->map = NULL;
+    data->sprites = NULL;
+    data->player_pos = NULL;
+    data->exit = NULL;
+}
+
+int main(int argc, char **argv)
+{
+    t_data  *data;
+    int     fd;
+
+    init_mlx(fd, argc, &argv);
+    init_map(data, argv[1]);
+    gameplay(data);
+    mlx_loop(data->mlx_ptr);
     return (0);
 }
