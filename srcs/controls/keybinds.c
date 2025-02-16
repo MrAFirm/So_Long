@@ -28,7 +28,7 @@ int keybinds(int keycode, t_data *data)
     else if (keycode == KEY_S || keycode == ARROW_DOWN)
         move_down(data, player_loc, &movecount);
     else
-        return (EXIT_SUCCESS);
+        return (EXIT_FAILURE);
     ft_printf("Steps Taken: %d\n", movecount);
     return (EXIT_SUCCESS);
 }
