@@ -22,7 +22,6 @@ int print_map(t_data *data, char **full_map)
 {
     int     row;
     int     col;
-    (void) full_map;
     row = -1;
     while (data->map.full_map[++row])
     {
