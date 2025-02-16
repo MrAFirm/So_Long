@@ -14,13 +14,14 @@
 
 /*
 To check for unique key symbols for the X11 library for definition.
-*/
+
 int on_keypress(int keysym, t_data *data)
 {
     (void)data;
     ft_printf("Key Pressed: %d\n", keysym);
     return (0);
 }
+*/
 
 /*
 To execute when the game window is closed by the 'X' button,
